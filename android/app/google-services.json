@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "873077109903",
+    "project_id": "cashinvest-42f6f",
+    "storage_bucket": "cashinvest-42f6f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:873077109903:android:b1ae2cf2f5b1255f3decfa",
+        "android_client_info": {
+          "package_name": "com.example.cash_invest"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBPz8V0fH5mFuskT7ZdicRoH92XMThdzss"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
