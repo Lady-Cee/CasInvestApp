@@ -1,13 +1,19 @@
 //import 'package:cash_invest/home_view.dart';
 import 'package:cash_invest/features/account/pages/account_view.dart';
+import 'package:cash_invest/features/home/bloc/home_bloc.dart';
 import 'package:cash_invest/features/invest/pages/invest_view.dart';
 import 'package:cash_invest/features/savings/pages/savings_view.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 //import '../../../home_view.dart';
+import '../bloc/home_state.dart';
 import 'home_view.dart';
 
 class HomePage extends StatefulWidget {
+  static route()=> MaterialPageRoute(builder: (context) {
+    return HomePage();
+  },);
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -24,8 +30,14 @@ class _HomePageState extends State<HomePage> {
   var selectedIndex = 0;
  // const ({super.key});
 
+
+
   @override
   Widget build(BuildContext context) {
+    HomeBloc homeBloc = context.watch<HomeBloc>();
+    HomeState homeState = homeBloc.state;
+    int selectedIndex = homeState.tabindex;
+
     return Scaffold(
     body: IndexedStack(
       children: listOfPages,
@@ -38,9 +50,7 @@ class _HomePageState extends State<HomePage> {
      showSelectedLabels: true,
      showUnselectedLabels: true,
      onTap: (value){
-       setState(() {
-         selectedIndex = value;
-       });
+      homeBloc.updateTabIndex(value);
      },
      items:[
        BottomNavigationBarItem(

@@ -40,6 +40,7 @@ class CardSavingDetails extends StatelessWidget {
                     disabledForegroundColor: Colors.white,
                   )
               ),
+              //SizedBox(width: 15,),
               Positioned(
                 top: 0,
                 right: 0,

@@ -45,6 +45,7 @@ dependencies:
   dev: ^1.0.0
   build_runner: ^2.4.8
   freezed_annotation: ^2.4.1
+  flutter_bloc: ^8.1.4
 
 dev_dependencies:
   flutter_test:

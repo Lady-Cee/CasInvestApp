@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../bloc/home_bloc.dart';
+import '../bloc/home_state.dart';
 import 'hide_todo_sheet.dart';
 import 'my_todo_item.dart';
 
@@ -11,7 +14,10 @@ class MyTodoSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    HomeBloc homeBloc = context.watch<HomeBloc>();
+    HomeState homeState = homeBloc.state;
+
+    return  Container(
       padding: EdgeInsets.symmetric(vertical: 16),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -29,19 +35,25 @@ class MyTodoSection extends StatelessWidget {
               //  SizedBox(width: 35),
               TextButton(
                 onPressed: () {
-                  showModalBottomSheet(
+                  // Toggle the visibility of the todo list
+                  if (homeBloc.state.hideTodo) {
+                    homeBloc.showTodoList();
+                  } else {
+                    // homeBloc.hideTodoList();
+                    // Show the bottom sheet when hiding the todo list
+                    showModalBottomSheet(
                       context: context,
                       showDragHandle: true,
-                      builder: (context)
-                  {
-                    return HideTodoSheet();
-                  },
-                  );
+                      builder: (context) {
+                        return HideTodoSheet();
+                      },
+                    );
+                  }
                 },
                 child: Row(
                   children: [
                     Text(
-                      "Hide",
+                       homeBloc.state.hideTodo ? "show" : "Hide",
                       style: TextStyle(
                           fontSize: 16,
                           color: Colors.red.shade700),
@@ -57,7 +69,7 @@ class MyTodoSection extends StatelessWidget {
             ],
           ),
           //list view start
-          SizedBox(
+          homeState.hideTodo == true ? Container() : SizedBox(
             height: 140,
             child: ListView(
               scrollDirection: Axis.horizontal,

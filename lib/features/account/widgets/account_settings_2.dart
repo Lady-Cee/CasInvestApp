@@ -1,6 +1,10 @@
 import 'package:cash_invest/features/account/widgets/account_settings_item.dart';
+import 'package:cash_invest/features/login/bloc/login_bloc.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../login/pages/login_page.dart';
 
 class AccountSettings2 extends StatelessWidget {
   const AccountSettings2({super.key});
@@ -55,6 +59,11 @@ class AccountSettings2 extends StatelessWidget {
                 color: Colors.red,
               ),
             ),
+              onTap: (){
+                context.read<LoginBloc>().logout();
+                Navigator.pushReplacement(context, LoginPage.route(),);
+              }
+
           )
         ],
       ),

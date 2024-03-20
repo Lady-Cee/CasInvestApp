@@ -1,8 +1,10 @@
 import 'package:cash_invest/utils.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../invest/widgets/invest_details_card.dart';
+import '../bloc/home_bloc.dart';
 import 'card_saving_details.dart';
 
 class UserBalanceDetails extends StatefulWidget {
@@ -17,6 +19,10 @@ class UserBalanceDetails extends StatefulWidget {
 class _UserBalanceDetailsState extends State<UserBalanceDetails> {
   @override
   Widget build(BuildContext context) {
+    HomeBloc homeBloc = context.watch<HomeBloc>();
+
+
+
     return DefaultTabController(
       length: 2,
       child: Builder(
@@ -36,6 +42,9 @@ class _UserBalanceDetailsState extends State<UserBalanceDetails> {
                         padding: const EdgeInsets.only(right:8.0),
                         child: CardSavingDetails(
                           balance: "${getNaira()}20000",
+                          onClick:() {
+                            homeBloc.updateTabIndex(1);
+                          },
                           topRightWidget: ElevatedButton(
                             onPressed: () {},
                             child: Row(
