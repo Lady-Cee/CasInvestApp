@@ -27,8 +27,13 @@ class _HomePageState extends State<HomePage> {
     AccountView(),
 
   ];
-  var selectedIndex = 0;
- // const ({super.key});
+ // var selectedIndex = 0;
+
+  @override
+  void initState(){
+    super.initState();
+    context.read<HomeBloc>().loadUserDetails();
+  }
 
 
 

@@ -20,7 +20,7 @@ class _UserBalanceDetailsState extends State<UserBalanceDetails> {
   @override
   Widget build(BuildContext context) {
     HomeBloc homeBloc = context.watch<HomeBloc>();
-
+    var homestate = context.watch<HomeBloc>().state;
 
 
     return DefaultTabController(
@@ -41,7 +41,8 @@ class _UserBalanceDetailsState extends State<UserBalanceDetails> {
                       Padding(
                         padding: const EdgeInsets.only(right:8.0),
                         child: CardSavingDetails(
-                          balance: "${getNaira()}20000",
+                          balance: "${homestate.userModel?.balance}",
+                          //"${getNaira()}20000",
                           onClick:() {
                             homeBloc.updateTabIndex(1);
                           },

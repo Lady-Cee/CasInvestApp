@@ -1,6 +1,8 @@
+import 'package:cash_invest/features/home/bloc/home_bloc.dart';
 import 'package:cash_invest/features/home/widgets/blog_section.dart';
 import 'package:cash_invest/features/invest/widgets/invest_details_card.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../widgets/card_saving_details.dart';
 import '../widgets/grown_up_section.dart';
@@ -16,13 +18,14 @@ class HomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var homeState = context.watch<HomeBloc>().state;
     return Scaffold(
         appBar: AppBar(
         title: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
         Text(
-            "Hello Cynthia",
+            "Hello ${homeState.userModel?.fullName ??" ..."}",
           style: TextStyle(
             fontWeight: FontWeight.bold
           ),

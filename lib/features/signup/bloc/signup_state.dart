@@ -1,7 +1,5 @@
 
 
-
-
 import 'package:equatable/equatable.dart';
 
 enum SignupStatus{Initial, Processing, Successful, Error}

@@ -67,6 +67,7 @@ class BlogSection extends StatelessWidget {
                 Image.asset("assets/images/person7.png"),
                 SizedBox(width: 8,),
                 Image.asset("assets/images/person8.png"),
+                //Text("Here"),
                 SizedBox(width: 8,),
                 Image.asset("assets/images/person9.png"),
               ],
